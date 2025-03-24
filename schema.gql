@@ -1,0 +1,70 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PriceBreak {
+  breakQuantity: Int!
+  unitPrice: Float!
+  totalPrice: Float!
+}
+
+type Packaging {
+  type: String!
+  minimumOrderQuantity: Int!
+  quantityAvailable: Int!
+  unitPrice: Float!
+  supplier: String!
+  priceBreaks: [PriceBreak!]!
+  manufacturerLeadTime: String
+}
+
+type ExportControlInfo {
+  us: String
+  was: String
+}
+
+type Specifications {
+  resistance: String
+  tolerance: String
+  powerRating: String
+  temperatureCoefficient: String
+  composition: String
+  features: String
+  mountingType: String
+  package: String
+  size: String
+  series: String
+  partStatus: String
+  temperatureRange: String
+  voltage: String
+  capacitance: String
+  inductance: String
+  current: String
+  rohs: String
+  countryOfOrigin: String
+  category: String
+  dateCode: String
+  hts: String
+  exportInfo: String
+  environmentalInfo: String
+  exportControlInfo: ExportControlInfo
+  environmental: String
+}
+
+type AggregatedPart {
+  name: String!
+  description: String!
+  totalStock: Int!
+  manufacturerLeadTime: Int!
+  manufacturerName: String!
+  packaging: [Packaging!]!
+  productDoc: String!
+  productUrl: String!
+  productImageUrl: String!
+  specifications: Specifications!
+  sourceParts: [String!]!
+}
+
+type Query {
+  aggregatedPart(partNumber: String!): AggregatedPart
+}
